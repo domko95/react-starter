@@ -10,9 +10,20 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 
+const InputColor = (PasswordInput) => {
+  if (PasswordInput.value.length >= 10) {
+    return 'green';
+  }
+  if (PasswordInput.value.length >= 4) {
+    return 'orange';
+  }
+  return 'red';
+};
+
 const Input = styled.input`
-  background: red;
+  background: ${() => InputColor};
 `;
+
 const PasswordInput = ({ value, onChange }) => {
   const [password, setPassword] = useState(value);
   useEffect(() => {
