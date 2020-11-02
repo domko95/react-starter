@@ -10,18 +10,21 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 
-const InputColor = (PasswordInput) => {
-  if (PasswordInput.value.length >= 10) {
-    return 'green';
-  }
-  if (PasswordInput.value.length >= 4) {
-    return 'orange';
-  }
-  return 'red';
-};
+// const getInputColor = (PasswordInput) => {
+//   if (PasswordInput.value.length >= 10) {
+//     return 'hsl(100, 100%, 50%)';
+//   }
+//   if (PasswordInput.value.length >= 4) {
+//     return 'hsl(40, 100%, 50%)';
+//   }
+//   return 'hsl(0, 100%, 50%)';
+// };
 
 const Input = styled.input`
-  background: ${() => InputColor};
+  background: ${(props) =>
+    `hsl(${
+      props.value.length * 10 > 100 ? 100 : props.value.length * 10
+    }, 100%, 50%)`};
 `;
 
 const PasswordInput = ({ value, onChange }) => {
